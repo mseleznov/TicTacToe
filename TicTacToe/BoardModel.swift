@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BoardModelDelegate: AnyObject {
-    func applyViewState(_ viewState: BoardViewState)
+    func applyViewState(_ viewState: BoardView.State)
 }
 
 class BoardModel {
@@ -38,27 +38,15 @@ class BoardModel {
     let service = Service()
     weak var delegate: BoardModelDelegate?
 
-    func didSelectOld(at indexPath: IndexPath) {
-        guard indexPath.row < 3, indexPath.section < 3, board[indexPath.section][indexPath.row] == .empty else {
-            return
-        }
-
-        switch player {
-        case .x:
-            board[indexPath.section][indexPath.row] = .x
-        case .o:
-            board[indexPath.section][indexPath.row] = .o
-        }
-
-        player.toggle()
-    }
-
     func didSelect(at indexPath: IndexPath) {
         guard indexPath.row < 3, indexPath.section < 3, board[indexPath.section][indexPath.row] == .empty else {
+            print("invalid index path \(indexPath)")
             return
         }
 
         board[indexPath.section][indexPath.row] = .x
+
+        applyViewState()
 
         let serviceBoard = makeServiceBoard()
 
@@ -78,8 +66,7 @@ class BoardModel {
                 self.board[oPos.c][oPos.r] = .o
             }
 
-            let viewState = self.makeViewState()
-            self.delegate?.applyViewState(viewState)
+            self.applyViewState()
         }
     }
 
@@ -103,7 +90,12 @@ class BoardModel {
         return Board(x: x, o: o)
     }
 
-    func makeViewState() -> BoardViewState {
+    private func applyViewState() {
+        let viewState = self.makeViewState()
+        self.delegate?.applyViewState(viewState)
+    }
+
+    func makeViewState() -> BoardView.State {
         var filesX = [0, 0, 0]
         var columnsX = [0, 0, 0]
         var leftDiagX = 0
@@ -141,22 +133,22 @@ class BoardModel {
         }
 
         let buttons = board.enumerated().map { (columnIndex, row) in
-            row.enumerated().map { (rowIndex, cell) -> BoardViewState.ButtonState in
+            row.enumerated().map { (rowIndex, cell) -> BoardView.CellState in
                 let winningCell = columnsX[columnIndex] == 3 || columnsO[columnIndex] == 3 ||
                 filesX[rowIndex] == 3 || filesO[rowIndex] == 3 ||
                 ((columnIndex == rowIndex) && leftDiagX == 3) || ((columnIndex == rowIndex) && leftDiagO == 3) ||
                 ((columnIndex + rowIndex) == 2 && rightDiagX == 3) || ((columnIndex + rowIndex) == 2 && rightDiagO == 3)
                 switch cell {
                 case .empty:
-                    return BoardViewState.ButtonState.empty
+                    return BoardView.CellState(text: "", color: .black)
                 case .x:
-                    return BoardViewState.ButtonState.filled("X", color: winningCell ? .red : .black)
+                    return BoardView.CellState(text: "X", color: winningCell ? .red : .black)
                 case .o:
-                    return BoardViewState.ButtonState.filled("O", color: winningCell ? .red : .black)
+                    return BoardView.CellState(text: "O", color: winningCell ? .red : .black)
                 }
             }
         }
 
-        return BoardViewState(buttonStates: buttons)
+        return BoardView.State(cells: buttons)
     }
 }

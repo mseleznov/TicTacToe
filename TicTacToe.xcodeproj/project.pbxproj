@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F734537281ACFFC00B6F3FC /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F734536281ACFFC00B6F3FC /* BoardView.swift */; };
 		8F8D4A8A28044DC100560564 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4A8928044DC100560564 /* AppDelegate.swift */; };
 		8F8D4A8C28044DC100560564 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4A8B28044DC100560564 /* SceneDelegate.swift */; };
 		8F8D4A8E28044DC100560564 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4A8D28044DC100560564 /* ViewController.swift */; };
@@ -16,8 +17,8 @@
 		8F8D4AA128044DC900560564 /* TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AA028044DC900560564 /* TicTacToeTests.swift */; };
 		8F8D4AAB28044DCA00560564 /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AAA28044DCA00560564 /* TicTacToeUITests.swift */; };
 		8F8D4AAD28044DCA00560564 /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AAC28044DCA00560564 /* TicTacToeUITestsLaunchTests.swift */; };
-		8F8D4ABA2804657000560564 /* BoardViewStateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AB92804657000560564 /* BoardViewStateFactory.swift */; };
-		8F8D4ABB2804657000560564 /* BoardViewStateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AB92804657000560564 /* BoardViewStateFactory.swift */; };
+		8F8D4ABA2804657000560564 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AB92804657000560564 /* BoardModel.swift */; };
+		8F8D4ABB2804657000560564 /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4AB92804657000560564 /* BoardModel.swift */; };
 		8F8D4ABD2805996700560564 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4ABC2805996700560564 /* Service.swift */; };
 		8F8D4ABE2805996700560564 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D4ABC2805996700560564 /* Service.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F734536281ACFFC00B6F3FC /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		8F8D4A8628044DC100560564 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F8D4A8928044DC100560564 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F8D4A8B28044DC100560564 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +55,7 @@
 		8F8D4AA628044DC900560564 /* TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F8D4AAA28044DCA00560564 /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		8F8D4AAC28044DCA00560564 /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8F8D4AB92804657000560564 /* BoardViewStateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewStateFactory.swift; sourceTree = "<group>"; };
+		8F8D4AB92804657000560564 /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
 		8F8D4ABC2805996700560564 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,8 +114,9 @@
 				8F8D4A9228044DC900560564 /* Assets.xcassets */,
 				8F8D4A9428044DC900560564 /* LaunchScreen.storyboard */,
 				8F8D4A9728044DC900560564 /* Info.plist */,
-				8F8D4AB92804657000560564 /* BoardViewStateFactory.swift */,
+				8F8D4AB92804657000560564 /* BoardModel.swift */,
 				8F8D4ABC2805996700560564 /* Service.swift */,
+				8F734536281ACFFC00B6F3FC /* BoardView.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -269,7 +272,8 @@
 				8F8D4A8E28044DC100560564 /* ViewController.swift in Sources */,
 				8F8D4A8A28044DC100560564 /* AppDelegate.swift in Sources */,
 				8F8D4ABD2805996700560564 /* Service.swift in Sources */,
-				8F8D4ABA2804657000560564 /* BoardViewStateFactory.swift in Sources */,
+				8F734537281ACFFC00B6F3FC /* BoardView.swift in Sources */,
+				8F8D4ABA2804657000560564 /* BoardModel.swift in Sources */,
 				8F8D4A8C28044DC100560564 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F8D4ABB2804657000560564 /* BoardViewStateFactory.swift in Sources */,
+				8F8D4ABB2804657000560564 /* BoardModel.swift in Sources */,
 				8F8D4AA128044DC900560564 /* TicTacToeTests.swift in Sources */,
 				8F8D4ABE2805996700560564 /* Service.swift in Sources */,
 			);
